@@ -31,6 +31,9 @@ module.exports = (grunt) ->
       styles:
         files: ['<%= yeoman.app %>/styles/{,*/}*.css']
         tasks: ['copy:styles', 'autoprefixer']
+      jade:
+        files: ['<%= yeoman.app %>/{,*/}*.jade']
+        tasks: ['jade:dist']
       livereload:
         options:
           livereload: '<%= connect.options.livereload %>'
@@ -79,6 +82,18 @@ module.exports = (grunt) ->
         }]
 
       server: '.tmp'
+
+    jade:
+      dist:
+        options:
+          pretty: true
+        files: [{
+          expand: true,
+          cwd: '<%= yeoman.app %>',
+          src: '{,*/}*.jade',
+          dest: '.tmp',
+          ext: '.html'
+        }]
 
     jshint:
       options:
@@ -308,6 +323,7 @@ module.exports = (grunt) ->
       ],
       dist: [
         'coffee',
+        'jade',
         'compass',
         'copy:styles',
         'imagemin',
