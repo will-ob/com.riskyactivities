@@ -1,7 +1,7 @@
 
 # # Globbing
 # for performance reasons we're only matching one level down:
-# 'test/spec/{,*/*.js'
+# 'test/spec/{,*/}*.js'
 # use this if you want to recursively match all subfolders:
 # 'test/spec/**/*.js'
 
@@ -20,25 +20,25 @@ module.exports = (grunt) ->
     yeoman: yeomanConfig,
     watch:
       coffee:
-        files: ['<%= yeoman.app %>/scripts/{,*/*.coffee']
+        files: ['<%= yeoman.app %>/scripts/{,*/}*.coffee']
         tasks: ['coffee:dist']
       coffeeTest:
-        files: ['test/spec/{,*/*.coffee']
+        files: ['test/spec/{,*/}*.coffee']
         tasks: ['coffee:test']
       compass:
-        files: ['<%= yeoman.app %>/styles/{,*/*.{scss,sass']
+        files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}']
         tasks: ['compass:server', 'autoprefixer']
       styles:
-        files: ['<%= yeoman.app %>/styles/{,*/*.css']
+        files: ['<%= yeoman.app %>/styles/{,*/}*.css']
         tasks: ['copy:styles', 'autoprefixer']
       livereload:
         options:
           livereload: '<%= connect.options.livereload %>'
         files: [
           '<%= yeoman.app %>/*.html'
-          '.tmp/styles/{,*/*.css'
-          '{.tmp,<%= yeoman.app %>/scripts/{,*/*.js'
-          '<%= yeoman.app %>/images/{,*/*.{png,jpg,jpeg,gif,webp,svg'
+          '.tmp/styles/{,*/}*.css'
+          '{.tmp,<%= yeoman.app %>/scripts/{,*/}*.js'
+          '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
     connect:
       options:
@@ -86,9 +86,9 @@ module.exports = (grunt) ->
 
       all: [
         'Gruntfile.js',
-        '<%= yeoman.app %>/scripts/{,*/*.js',
+        '<%= yeoman.app %>/scripts/{,*/}*.js',
         '!<%= yeoman.app %>/scripts/vendor/*',
-        'test/spec/{,*/*.js'
+        'test/spec/{,*/}*.js'
       ]
 
     mocha:
@@ -104,7 +104,7 @@ module.exports = (grunt) ->
         files: [{
           expand: true,
           cwd: '<%= yeoman.app %>/scripts',
-          src: '{,*/*.coffee',
+          src: '{,*/}*.coffee',
           dest: '.tmp/scripts',
           ext: '.js'
         }]
@@ -113,7 +113,7 @@ module.exports = (grunt) ->
         files: [{
           expand: true,
           cwd: 'test/spec',
-          src: '{,*/*.coffee',
+          src: '{,*/}*.coffee',
           dest: '.tmp/spec',
           ext: '.js'
         }]
@@ -152,7 +152,7 @@ module.exports = (grunt) ->
         files: [{
           expand: true,
           cwd: '.tmp/styles/',
-          src: '{,*/*.css',
+          src: '{,*/}*.css',
           dest: '.tmp/styles/'
         }]
 
@@ -185,10 +185,10 @@ module.exports = (grunt) ->
       dist:
         files:
           src: [
-            '<%= yeoman.dist %>/scripts/{,*/*.js',
-            '<%= yeoman.dist %>/styles/{,*/*.css',
-            '<%= yeoman.dist %>/images/{,*/*.{png,jpg,jpeg,gif,webp',
-            '<%= yeoman.dist %>/styles/fonts/{,*/*.*'
+            '<%= yeoman.dist %>/scripts/{,*/}*.js',
+            '<%= yeoman.dist %>/styles/{,*/}*.css',
+            '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}',
+            '<%= yeoman.dist %>/styles/fonts/{,*/}*.*'
           ]
 
 
@@ -203,15 +203,15 @@ module.exports = (grunt) ->
       options:
         dirs: ['<%= yeoman.dist %>']
 
-      html: ['<%= yeoman.dist %>/{,*/*.html'],
-      css: ['<%= yeoman.dist %>/styles/{,*/*.css']
+      html: ['<%= yeoman.dist %>/{,*/}*.html'],
+      css: ['<%= yeoman.dist %>/styles/{,*/}*.css']
 
     imagemin:
       dist:
         files: [{
           expand: true,
           cwd: '<%= yeoman.app %>/images',
-          src: '{,*/*.{png,jpg,jpeg',
+          src: '{,*/}*.{png,jpg,jpeg}',
           dest: '<%= yeoman.dist %>/images'
         }]
 
@@ -221,7 +221,7 @@ module.exports = (grunt) ->
         files: [{
           expand: true,
           cwd: '<%= yeoman.app %>/images',
-          src: '{,*/*.svg',
+          src: '{,*/}*.svg',
           dest: '<%= yeoman.dist %>/images'
         }]
 
@@ -234,8 +234,8 @@ module.exports = (grunt) ->
       # dist:
       #   files:
       #     '<%= yeoman.dist %>/styles/main.css': [
-      #       '.tmp/styles/{,*/*.css',
-      #       '<%= yeoman.app %>/styles/{,*/*.css'
+      #       '.tmp/styles/{,*/}*.css',
+      #       '<%= yeoman.app %>/styles/{,*/}*.css'
       #     ]
       #
       #
@@ -270,10 +270,10 @@ module.exports = (grunt) ->
           cwd: '<%= yeoman.app %>',
           dest: '<%= yeoman.dist %>',
           src: [
-            '*.{ico,png,txt',
+            '*.{ico,png,txt}',
             '.htaccess',
-            'images/{,*/*.{webp,gif',
-            'styles/fonts/{,*/*.*',
+            'images/{,*/}*.{webp,gif}',
+            'styles/fonts/{,*/}*.*',
             'bower_components/sass-bootstrap/fonts/*.*'
           ]
         }]
@@ -283,15 +283,15 @@ module.exports = (grunt) ->
         dot: true,
         cwd: '<%= yeoman.app %>/styles',
         dest: '.tmp/styles/',
-        src: '{,*/*.css'
+        src: '{,*/}*.css'
 
 
     modernizr:
       devFile: '<%= yeoman.app %>/bower_components/modernizr/modernizr.js',
       outputFile: '<%= yeoman.dist %>/bower_components/modernizr/modernizr.js',
       files: [
-        '<%= yeoman.dist %>/scripts/{,*/*.js',
-        '<%= yeoman.dist %>/styles/{,*/*.css',
+        '<%= yeoman.dist %>/scripts/{,*/}*.js',
+        '<%= yeoman.dist %>/styles/{,*/}*.css',
         '!<%= yeoman.dist %>/scripts/vendor/*'
       ],
       uglify: true
