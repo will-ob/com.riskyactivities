@@ -38,7 +38,7 @@ module.exports = (grunt) ->
         files: ['test/spec/{,*/}*.coffee']
         tasks: ['coffee:test']
       compass:
-        files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}']
+        files: ['<%= yeoman.app %>/{,*/}*.{scss,sass}']
         tasks: ['compass:server', 'autoprefixer']
       styles:
         files: ['<%= yeoman.app %>/styles/{,*/}*.css']
@@ -140,8 +140,8 @@ module.exports = (grunt) ->
 
     compass:
       options:
-        sassDir: '<%= yeoman.app %>/styles',
-        cssDir: 'dist/styles',
+        sassDir: '<%= yeoman.app %>',
+        cssDir: '<%= yeoman.dist %>/styles',
     #     generatedImagesDir: '.tmp/images/generated',
     #     imagesDir: '<%= yeoman.app %>/images',
     #     javascriptsDir: '<%= yeoman.app %>/scripts',
@@ -157,9 +157,9 @@ module.exports = (grunt) ->
     #       generatedImagesDir: '<%= yeoman.dist %>/images/generated'
 
 
-    #   server:
-    #     options:
-    #       debugInfo: true
+      server:
+        options:
+          debugInfo: true
 
 
 
@@ -374,6 +374,7 @@ module.exports = (grunt) ->
 
     grunt.registerTask('build', [
       'clean:dist',
+      'compass'
       'coffee:dist'
       'jade'
       'requirejs'
