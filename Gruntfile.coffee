@@ -291,25 +291,8 @@ module.exports = (grunt) ->
           src: [
             'vendor/bower/modernizr/modernizr.js'
           ]
-    #       dot: true,
-    #       cwd: '<%= yeoman.app %>',
           dest: '<%= yeoman.dist %>/vendor/scripts/',
-    #       src: [
-    #         '*.{ico,png,txt}',
-    #         '.htaccess',
-    #         'images/{,*/}*.{webp,gif}',
-    #         'styles/fonts/{,*/}*.*',
-    #         'bower_components/sass-bootstrap/fonts/*.*'
-    #       ]
         }]
-
-    #   styles:
-    #     expand: true,
-    #     dot: true,
-    #     cwd: '<%= yeoman.app %>/styles',
-    #     dest: '.tmp/styles/',
-    #     src: '{,*/}*.css'
-
 
     # modernizr:
     #   devFile: '<%= yeoman.app %>/bower_components/modernizr/modernizr.js',

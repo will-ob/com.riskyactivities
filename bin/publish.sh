@@ -2,26 +2,38 @@
 
 # directory of this script
 DIR="$( cd "$( dirname "$0" )" && pwd )"
-cd $DIR
+cd ../$DIR
 
 # build
-grunt build
+grunt build || { echo 'Build failed'; exit 1; }
 
 # checkout new branch
 WORKING_BRANCH="$(git rev-parse --abbrev-ref HEAD)"
-git checkout -b build
+git stash
+git checkout --orphan build
+git reset --hard $WORKING_BRANCH
 
-# delete all but build directory
-rm -rf !(dist|.git)
-mv dist/* ./
-rmdir dist
+# add all files in the dist dir to branch at root level
+FILES="$(ls dist)"
 
-# add and commit
-git add *
+mv dist/* ./ -b
+
+git rm -rf
+for file in "$FILES"; do
+  git add $file -f
+  if [ -e $file~ ]; then
+    rm $file
+    mv $file~ $file
+  fi
+done
+
 git commit -m "Built $(date) : $(git log | head -1)"
 
-# push to github :gh-pages
+# push to gh-pages
 git push origin build:gh-pages
 
+# return to working branch
 git checkout $WORKING_BRANCH
-git branch -D build 
+git reset --hard HEAD
+git branch -D build
+git stash pop
