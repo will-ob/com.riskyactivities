@@ -30,7 +30,7 @@ done
 git commit -m "Built $(date) : $(git log | head -1)"
 
 # push to gh-pages
-git push origin build:gh-pages
+git push origin build:gh-pages -f
 
 # return to working branch
 git checkout $WORKING_BRANCH

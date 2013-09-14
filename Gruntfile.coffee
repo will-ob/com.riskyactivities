@@ -286,6 +286,14 @@ module.exports = (grunt) ->
     copy:
       dist:
         files: [{
+          expand: true
+          flatten: false
+          cwd: "<%= yeoman.app %>" 
+          src: [
+            "CNAME"
+          ]
+          dest: "<%= yeoman.dist %>/"
+        }, {
           expand: true,
           flatten: true
           src: [
