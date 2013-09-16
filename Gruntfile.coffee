@@ -291,6 +291,7 @@ module.exports = (grunt) ->
           cwd: "<%= yeoman.app %>" 
           src: [
             "CNAME"
+            "*.txt"
           ]
           dest: "<%= yeoman.dist %>/"
         }, {
