@@ -22,6 +22,7 @@ module.exports = (grunt) ->
   require('time-grunt')(grunt)
   # load all grunt tasks
   require('load-grunt-tasks')(grunt)
+  pygmentize = require('pygmentize-bundled')
 
   # configurable paths
   yeomanConfig =
@@ -81,8 +82,8 @@ module.exports = (grunt) ->
         files: [{
           dot: true,
           src: [
-            # '.tmp',
-            '<%= yeoman.dist %>/*',
+            '.tmp'
+            '<%= yeoman.dist %>/*'
             '!<%= yeoman.dist %>/.git*'
           ]
         }]
@@ -90,6 +91,14 @@ module.exports = (grunt) ->
       #   server: '.tmp'
 
     jade:
+      markdownTmp:
+        options:
+          pretty: true
+        files: [{
+          src: 'app/article-tmpl.jade',
+          dest: '.tmp/article-tmpl.jst'
+        }]
+
       dist:
         options:
           pretty: true
@@ -281,6 +290,28 @@ module.exports = (grunt) ->
     #       }
     #     ]
 
+    markdown:
+      all:
+        files: [
+          {
+            expand: true,
+            cwd: 'app'
+            src: '**/*.md'
+            flatten: false
+            dest: '<%= yeoman.dist %>/'
+            ext: '.html'
+          }
+        ],
+        options:
+          template: '.tmp/article-tmpl.jst'
+          # preCompile: (src, context) ->
+          #   console.log "pre comp"
+          # postCompile: (src, context) ->
+          #   console.log "post comp"
+          templateContext: {}
+          markdownOptions:
+            gfm: true
+            highlight: 'manual'
 
     # # Put files not handled in other tasks here
     copy:
@@ -301,6 +332,13 @@ module.exports = (grunt) ->
             'vendor/bower/modernizr/modernizr.js'
           ]
           dest: '<%= yeoman.dist %>/vendor/scripts/',
+        }, {
+          expand: true,
+          flatten: true
+          src: [
+            'vendor/bower/highlightjs/styles/github.css'
+          ]
+          dest: '<%= yeoman.dist %>/vendor/styles/',
         }]
 
     # modernizr:
@@ -365,10 +403,11 @@ module.exports = (grunt) ->
     # ])
 
     grunt.registerTask('build', [
-      'clean:dist',
+      'clean:dist'
       'compass'
       'coffee:dist'
       'jade'
+      'markdown'
       'requirejs'
       'concat'
       'copy'
