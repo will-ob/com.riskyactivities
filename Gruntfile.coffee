@@ -329,6 +329,7 @@ module.exports = (grunt) ->
           flatten: true
           src: [
             'vendor/bower/modernizr/modernizr.js'
+            'vendor/bower/MathJax/MathJax.js'
           ]
           dest: '<%= yeoman.dist %>/vendor/scripts/',
         }, {
