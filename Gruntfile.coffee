@@ -33,7 +33,7 @@ module.exports = (grunt) ->
     yeoman: yeomanConfig,
     watch:
       coffee:
-        files: ['<%= yeoman.app %>/scripts/{,*/}*.coffee']
+        files: ['<%= yeoman.app %>/{,*/}*.coffee']
         tasks: ['coffee:dist']
       coffeeTest:
         files: ['test/spec/{,*/}*.coffee']
@@ -47,6 +47,13 @@ module.exports = (grunt) ->
       jade:
         files: ['<%= yeoman.app %>/{,*/}*.jade']
         tasks: ['jade:dist']
+      markdown:
+        files: [
+          '<%= yeoman.app %>/{,*/}*.md',
+          '<%= yeoman.app %>/article-tmpl.jade',
+          '<%= yeoman.app %>/includes/{,*/}*.jade'
+        ]
+        tasks: ['markdown']
       livereload:
         options:
           livereload: '<%= connect.options.livereload %>'
@@ -172,17 +179,17 @@ module.exports = (grunt) ->
 
 
 
-    # autoprefixer:
-    #   options:
-    #     browsers: ['last 1 version']
+    autoprefixer:
+      options:
+        browsers: ['last 1 version']
 
-    #   dist:
-    #     files: [{
-    #       expand: true,
-    #       cwd: '.tmp/styles/',
-    #       src: '{,*/}*.css',
-    #       dest: '.tmp/styles/'
-    #     }]
+      dist:
+        files: [{
+          expand: true,
+          cwd: '.tmp/styles/',
+          src: '{,*/}*.css',
+          dest: '.tmp/styles/'
+        }]
 
 
     concat:
