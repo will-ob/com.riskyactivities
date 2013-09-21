@@ -5,8 +5,8 @@ include includes/nav
 script(src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML")
 link(rel="stylesheet", href="/vendor/styles/github.css")
 
-<div class="row">
-  <%= content %>
-</div>
+div(class="content row")
+  div(class="large-12 columns")
+    <%= content %>
 
 include includes/footer
