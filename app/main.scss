@@ -1,5 +1,14 @@
 $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 
+@import url(http://fonts.googleapis.com/css?family=Gentium+Book+Basic);
+
+$body-bg: #fff;
+$body-font-color: #222;
+$header-font-family: "Gentium Book Basic", serif;
+$body-font-family: "Gentium Book Basic", serif;
+$body-font-weight: normal;
+$body-font-style: normal;
+
 @import 'foundation/scss/normalize';
 @import 'foundation/scss/foundation';
 
