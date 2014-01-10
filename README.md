@@ -5,10 +5,12 @@ Adventures through project planning and risk management.
 
 Install
 -----------
-`sudo npm install`
-`bower install`
-`grunt build`
-`cd dist && serve`
+```
+sudo npm install
+bower install
+grunt build
+cd dist && serve
+```
 
 Publish
 -----------

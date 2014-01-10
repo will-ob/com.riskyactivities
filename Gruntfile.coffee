@@ -311,7 +311,6 @@ module.exports = (grunt) ->
           templateContext: {}
           markdownOptions:
             gfm: true
-            highlight: 'manual'
 
     # # Put files not handled in other tasks here
     copy:
