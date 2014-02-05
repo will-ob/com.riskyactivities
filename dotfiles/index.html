@@ -1,0 +1,139 @@
+<!DOCTYPE html><!--[if lt IE 7]>   <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]--><!--[if IE 7]>     <html class="no-js lt-ie9 lt-ie8"> <![endif]--><!--[if IE 8]>     <html class="no-js lt-ie9"> <![endif]--><!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Risky Activities</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="/styles/main.css">
+  <script src="/vendor/scripts/modernizr.js"></script>
+</head>
+<body><!--[if lt IE 10]>
+  <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p></p><![endif]-->
+</body>
+<div class="row header">
+  <div class="large-6 columns">
+    <h1 class="logo">Risky Activities</h1>
+  </div>
+  <div class="large-6 columns">
+    <ul class="inline-list">
+      <li><a href="/">Home</a></li>
+      <li><a href="/about/">About</a></li>
+    </ul>
+  </div>
+</div>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<link rel="stylesheet" href="/vendor/styles/github.css">
+<div class="content row">
+  <div class="large-12 columns"><h1>Dotfiles</h1>
+<p>Those hidden configuration files for your </p>
+<ul>
+<li>Customize your working environment</li>
+<li>I keep mine here: <a href="https://github.com/will-ob/bachelor-pad">Batchelor Pad</a></li>
+<li>Personalized</li>
+</ul>
+<h3>Installer</h3>
+<p>One line install</p>
+<pre><code class="lang-bash">git clone git@github.com/user/dotfiles &amp;&amp; cd dotfiles &amp;&amp; ./install.sh</code></pre>
+<h3>Aliases</h3>
+<p>Shortcuts for the terminal.</p>
+<ul>
+<li>Pipe to clipboard
+<code>alias xclip=&quot;xclip -selection c&quot;</code> to copy things to your clipboard</li>
+<li>Git shorthand
+<code>alias gs=&quot;git status&quot;</code></li>
+<li>View image
+<code>alias img=&quot;eog&quot;</code> Launch gnome image viewer</li>
+<li>Whats my ip
+<code>alias whats-my-ip=&quot;curl -s checkip.dyndns.org | grep -Eo &#39;[0-9\.]+&#39;&quot;</code> what is my ip</li>
+<li>Checkout PRs from URL</li>
+<li><p>Kill process on port</p>
+</li>
+<li><p><code>alias git=&quot;hub&quot;</code> hub is the new git <em>see #bin section</em></p>
+</li>
+</ul>
+<h3>Bash Functions</h3>
+<p>When aliases are too cobomplicated.</p>
+<ul>
+<li>killp</li>
+</ul>
+<h3>Vim</h3>
+<p>Editor of choice.</p>
+<ul>
+<li>Vundle</li>
+<li>Syntax highlighting</li>
+<li>Two spaces, non-negotiable</li>
+</ul>
+<pre><code class="lang-vim">    &quot; Softtabs, 2 spaces
+    set tabstop=2
+    set shiftwidth=2
+    set expandtab</code></pre>
+<ul>
+<li>ruler</li>
+<li>No swap file</li>
+<li>pave the cowpaths
+map ; :</li>
+</ul>
+<h3>Tmux</h3>
+<p>Break away terminal session.</p>
+<ul>
+<li>Restore lost ssh session (<code>tmux attach</code>)</li>
+<li>Directional mappings
+Panes can be split using <code>&lt;control&gt; + %</code> and <code>&lt;control&gt; + &quot;</code>. Navigating these panes is annoying until you add directional bindings (left, right, down, up) instead of the default.</li>
+</ul>
+<pre><code>etw -g mode-keys vi
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R</code></pre>
+<p>Navigate between windows the same way.</p>
+<pre><code>bind-key -r C-h select-window -t :-
+bind-key -r C-l select-window -t :+</code></pre>
+<h3>Git</h3>
+<ul>
+<li>Compare branches via github</li>
+<li>Checkout PR from URL</li>
+</ul>
+<p><a href="http://hub.github.com">hub</a>
+  - check out a pr directly with <code>hub checkout https://github.com/github/hub/pull/134</code>
+  - open compare view <code>hub compare v0.1..v0.9</code>
+  - passes through all git commands so you can <code>alias git=&quot;hub&quot;</code> and use the above like it was a part of git all along</p>
+<pre><code>git checkout</code></pre>
+<h3>Xmodmap</h3>
+<ul>
+<li>Set your standard keyboard</li>
+<li>Rebind keys</li>
+</ul>
+<h3>Bash Profile &amp;&amp; Bashrc</h3>
+<ul>
+<li>Load login shell from terminal</li>
+</ul>
+<h3>Bins</h3>
+<ul>
+<li>custom binaries / shell scripts</li>
+<li>make sure you add them to your path</li>
+<li>killp - prefer here because they are easier to track down
+eg. <code>which killp</code></li>
+</ul>
+<h3>Crontab</h3>
+<ul>
+<li>On run on startup</li>
+</ul>
+<p>Just dont forget to take it slow. Pick a few new tools to learn at a time. See what you like and keep your environment crud free.</p>
+</div>
+</div>
+<footer class="row">
+  <div class="large-12 columns">
+    <div class="copyright">2012 &copy; Will O'Brien</div>
+  </div>
+  <script src="scripts/required.js"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-34928221-2', 'riskyactivities.com');
+    ga('send', 'pageview');
+    
+  </script>
+</footer>
