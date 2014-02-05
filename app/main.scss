@@ -1,28 +1,40 @@
 $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 
+@import url(http://fonts.googleapis.com/css?family=Gentium+Book+Basic);
+
+$body-bg: #fff;
+$body-font-color: #222;
+$header-font-family: "Gentium Book Basic", serif;
+$body-font-family: "Gentium Book Basic", serif;
+$body-font-weight: normal;
+$body-font-style: normal;
+
 @import 'foundation/scss/normalize';
 @import 'foundation/scss/foundation';
 
+
+
 /* Space out content a bit */
 body {
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 20px;
 }
 
 /* Custom page header */
 .header {
+  .logo {
+    margin: 0px;
+  }
   border-bottom: 1px solid #e5e5e5;
   ul {
     float: right;
+    margin-top: 1em;
   }
+}
+
+.content {
+  margin-top: 1em;
+  min-height: 600px;
 }
 
 /* Make the masthead heading the same height as the navigation */
@@ -34,7 +46,14 @@ body {
 }
 
 /* Custom page footer */
-.footer {
+footer {
+
+  .copyright {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
   padding-top: 19px;
   color: #777;
   border-top: 1px solid #e5e5e5;

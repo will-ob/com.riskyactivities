@@ -15,6 +15,6 @@ cd dist && serve
 Publish
 -----------
 
-`bin/publish.sh` - build and push `dist/` to gh-pages
+[`git publish`](https://github.com/will-ob/git-publish)
 
-Will O'Brien (c) 2013
+Will O'Brien (c) 2014
